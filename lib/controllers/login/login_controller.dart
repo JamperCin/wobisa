@@ -35,7 +35,6 @@ class LoginController extends BaseController {
   /// Use a dummy email and password to validate and give response
   Future<void> onSignInOnClick() async {
     isProcessingRequest.value = true;
-    isProcessingRequest.value = true;
     await Future.delayed(const Duration(seconds: 3));
     isProcessingRequest.value = false;
 

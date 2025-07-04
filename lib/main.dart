@@ -1,6 +1,7 @@
 import 'package:core_module/core/app/app_dimens.dart';
 import 'package:core_module/core/def/global_def.dart';
 import 'package:core_module/core_module.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wobisa/core/res/app_themes.dart';
@@ -8,10 +9,20 @@ import 'package:wobisa/core/res/app_themes.dart';
 import 'core/res/app_colors.dart';
 import 'core/routes/app_routes.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  // if (kReleaseMode) {
+  //   debugPrint = (String? message, {int? wrapWidth}) {};
+  // }
+
+  await CoreModule().init(
+    envPath: 'assets/data/env.json',
+    homePageScreen: "DashBoardScreen",
+    loginScreen: "LoginScreen",
+  );
+
+
 
   // Set status bar color
   SystemChrome.setSystemUIOverlayStyle(
@@ -23,6 +34,9 @@ void main() {
       Brightness.light, // For Android (light icons on status bar)
     ),
   );
+
+  runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
