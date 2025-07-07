@@ -25,7 +25,7 @@ class SignUpVerificationScreen extends BaseScreenStandard {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Confirm your email", style: textTheme.titleLarge),
+          Text(confirmEmail, style: textTheme.titleLarge),
           Gap(70.dp()),
           Center(
             child: PinEntryWidget(
@@ -47,13 +47,13 @@ class SignUpVerificationScreen extends BaseScreenStandard {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Haven't received code?  ",
+                              text: noCodeSent,
                               style: textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             TextSpan(
-                              text: "Send again",
+                              text: sendCodeAgain,
                               style: textTheme.bodyMedium?.copyWith(
                                 color: colorScheme.primary,
                                 fontWeight: FontWeight.w600,
@@ -69,7 +69,7 @@ class SignUpVerificationScreen extends BaseScreenStandard {
           Obx(
             () => ButtonWidget(
               onTap: _controller.onVerifyCodeOnClick,
-              text: 'Continue',
+              text: continueButtonTitle,
               enabled: _controller.isPinValid.value,
               isLoading: _controller.isProcessingRequest.value,
             ),

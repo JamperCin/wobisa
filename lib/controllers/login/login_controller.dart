@@ -4,6 +4,7 @@ import 'package:core_module/core_module.dart';
 import 'package:core_module/core_ui/snippets/snack_bar_snippet.dart';
 import 'package:flutter/material.dart';
 import 'package:wobisa/controllers/base/base_controller.dart';
+import 'package:wobisa/core/res/app_strings.dart';
 import 'package:wobisa/ui/dashboard/dash_board_screen.dart';
 import 'package:wobisa/ui/sign_up/sign_up_screen.dart';
 
@@ -39,11 +40,11 @@ class LoginController extends BaseController {
     isProcessingRequest.value = false;
 
     if (emailTextController.text == "test@email.com" &&
-        passwordTextController.text == "Password123") {
+        passwordTextController.text == "Password@123") {
       NavUtils().fireTargetOff(DashBoardScreen());
     } else {
       SnackBarSnippet().snackBarToast(
-        message: 'Incorrect email or password',
+        message: inCorrectEmailOrPassword,
         persistent: true,
         prefixIcon: Icons.info,
       );

@@ -4,6 +4,7 @@ import 'package:core_module/core_module.dart';
 import 'package:core_module/core_ui/base_screen/base_screen_standard.dart';
 import 'package:flutter/material.dart';
 import 'package:wobisa/controllers/sign_up/sign_up_user_info_controller.dart';
+import 'package:wobisa/core/res/app_strings.dart';
 
 class SignUpUserInfoScreen extends BaseScreenStandard {
   final _controller = Get.put(SignUpUserInfoController());
@@ -20,16 +21,13 @@ class SignUpUserInfoScreen extends BaseScreenStandard {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Finish line", style: textTheme.titleLarge),
+          Text(finishLine, style: textTheme.titleLarge),
           Gap(20.dp()),
-          Text(
-            "Complete these final information and start planning your trips",
-            style: textTheme.labelMedium,
-          ),
+          Text(userInfoSubTitle, style: textTheme.labelSmall),
           Gap(100.dp()),
           TextFieldWidget(
-            labelText: 'First name',
-            hintText: 'Eg. John',
+            labelText: firstNameLabel,
+            hintText: firstNameHint,
             controller: _controller.fNameTextController,
             labelStyle: textTheme.bodyMedium,
             unFocusColor: colorScheme.secondary,
@@ -38,8 +36,8 @@ class SignUpUserInfoScreen extends BaseScreenStandard {
           ),
           Gap(20.dp()),
           TextFieldWidget(
-            labelText: 'Last name',
-            hintText: 'Eg. Doe',
+            labelText: lastNameLabel,
+            hintText: lastNameHint,
             controller: _controller.lNameTextController,
             labelStyle: textTheme.bodyMedium,
             unFocusColor: colorScheme.secondary,
@@ -48,8 +46,8 @@ class SignUpUserInfoScreen extends BaseScreenStandard {
           ),
           Gap(20.dp()),
           TextFieldWidget.withPhoneNumber(
-            labelText: 'Phone number',
-            hintText: '999 999 9999',
+            labelText: phoneNumberLabel,
+            hintText: phoneNumberHint,
             defaultCountryCode: 'GH',
             hasCountryPicker: true,
             countryPickerDecorationStyle:
@@ -63,7 +61,7 @@ class SignUpUserInfoScreen extends BaseScreenStandard {
           ),
           Gap(5.dp()),
           Text(
-            "We will be sending you something",
+            userInfoDesc,
             style: textTheme.labelSmall?.copyWith(fontSize: 12.dp()),
           ),
           Gap(20.dp()),
@@ -79,7 +77,7 @@ class SignUpUserInfoScreen extends BaseScreenStandard {
       child: Obx(
         () => ButtonWidget(
           onTap: _controller.onSubmitUserButtonOnClick,
-          text: 'Continue',
+          text: continueButtonTitle,
           enabled: _controller.isValidEntries.value,
           isLoading: _controller.isProcessingRequest.value,
         ),

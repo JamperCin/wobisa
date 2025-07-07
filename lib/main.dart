@@ -9,34 +9,16 @@ import 'package:wobisa/core/res/app_themes.dart';
 import 'core/res/app_colors.dart';
 import 'core/routes/app_routes.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // if (kReleaseMode) {
   //   debugPrint = (String? message, {int? wrapWidth}) {};
   // }
 
-  await CoreModule().init(
-    envPath: 'assets/data/env.json',
-    homePageScreen: "DashBoardScreen",
-    loginScreen: "LoginScreen",
-  );
-
-
-
-  // Set status bar color
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: whiteColor, // Set the status bar color
-      statusBarBrightness:
-      Brightness.light, // For iOS (light text on status bar)
-      statusBarIconBrightness:
-      Brightness.light, // For Android (light icons on status bar)
-    ),
-  );
+  await CoreModule().init(envPath: 'assets/data/env.json');
 
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -56,4 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

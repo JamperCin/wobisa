@@ -27,11 +27,11 @@ class SignUpSetPasswordScreen extends BaseScreenStandard {
         children: [
           Text(setPasswordTitle, style: textTheme.titleLarge),
           Gap(20.dp()),
-          Text(setPasswordSubTitle, style: textTheme.labelMedium),
+          Text(setPasswordSubTitle, style: textTheme.labelSmall),
           Gap(70.dp()),
           TextFieldWidget.withPassword(
-            labelText: 'Password',
-            hintText: 'Enter password',
+            labelText: passwordLabel,
+            hintText: passwordHint,
             controller: _controller.passwordTextController,
             labelStyle: textTheme.bodyMedium,
             unFocusColor: colorScheme.secondary,
@@ -41,7 +41,7 @@ class SignUpSetPasswordScreen extends BaseScreenStandard {
             onChanged: _controller.onValidateEntry,
           ),
           Gap(20.dp()),
-          Text('At least', style: textTheme.labelSmall),
+          Text(atLeast, style: textTheme.labelSmall),
           Gap(10.dp()),
           Obx(
             () => Wrap(
@@ -50,18 +50,18 @@ class SignUpSetPasswordScreen extends BaseScreenStandard {
                   : 4.dp(), // Horizontal space between items
               runSpacing: 5.dp(), // Vertical space between lines
               children: [
-                _buildCheck("8 characters long", _controller.hasMinLength),
-                _buildCheck("A number", _controller.hasDigit),
-                _buildCheck("A lowercase letter", _controller.hasLowercase),
-                _buildCheck("An uppercase letter", _controller.hasUppercase),
-                _buildCheck("A special character", _controller.hasSpecialChar),
+                _buildCheck(charactersLong, _controller.hasMinLength),
+                _buildCheck(aNumber, _controller.hasDigit),
+                _buildCheck(aLowercaseLetter, _controller.hasLowercase),
+                _buildCheck(anUppercaseLetter, _controller.hasUppercase),
+                _buildCheck(aSpecialCharacter, _controller.hasSpecialChar),
               ],
             ),
           ),
           Gap(40.dp()),
           TextFieldWidget.withPassword(
-            labelText: 'Confirm Password',
-            hintText: 'Confirm password',
+            labelText: confirmPassword,
+            hintText: confirmPassword,
             controller: _controller.confirmPasswordTextController,
             labelStyle: textTheme.bodyMedium,
             unFocusColor: colorScheme.secondary,
@@ -100,7 +100,7 @@ class SignUpSetPasswordScreen extends BaseScreenStandard {
       child: Obx(
             () => ButtonWidget(
           onTap: _controller.onSetPasswordButtonOnclick,
-          text: 'Continue',
+          text: continueButtonTitle,
           enabled: _controller.isValidPassword.value,
           isLoading: _controller.isProcessingRequest.value,
         ),

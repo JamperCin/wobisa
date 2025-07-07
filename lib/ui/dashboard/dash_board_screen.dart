@@ -2,6 +2,7 @@ import 'package:core_module/core/utils/navigation_utils.dart';
 import 'package:core_module/core_module.dart';
 import 'package:core_module/core_ui/base_screen/base_screen_standard.dart';
 import 'package:flutter/material.dart';
+import 'package:wobisa/core/res/app_strings.dart';
 import 'package:wobisa/ui/login/login_screen.dart';
 
 class DashBoardScreen extends BaseScreenStandard {
@@ -31,7 +32,7 @@ class DashBoardScreen extends BaseScreenStandard {
       children: [
         Center(
           child: Text(
-            "Home Screen",
+            homeScreen,
             style: textTheme.displayLarge,
             textAlign: TextAlign.center,
           ),

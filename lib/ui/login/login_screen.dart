@@ -3,6 +3,7 @@ import 'package:core_module/core_module.dart';
 import 'package:core_module/core_ui/base_screen/base_screen_standard.dart';
 import 'package:flutter/material.dart';
 import 'package:wobisa/controllers/login/login_controller.dart';
+import 'package:wobisa/core/res/app_strings.dart';
 
 class LoginScreen extends BaseScreenStandard {
   final _controller = Get.put(LoginController());
@@ -15,23 +16,17 @@ class LoginScreen extends BaseScreenStandard {
   @override
   Widget body(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(
-        horizontal: 24.dp(),
-        vertical: 16.dp(),
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 24.dp(), vertical: 16.dp()),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Login Screen", style: textTheme.titleLarge),
+          Text(loginTitle, style: textTheme.titleLarge),
           Gap(20.dp()),
-          Text(
-            "Log in to manage your bookings and explore new destinations.",
-            style: textTheme.labelMedium,
-          ),
+          Text(loginSubTitle, style: textTheme.labelMedium),
           Gap(70.dp()),
           TextFieldWidget(
-            labelText: 'Email',
-            hintText: 'Enter email',
+            labelText: emailLabel,
+            hintText: emailHint,
             keyboardType: TextInputType.emailAddress,
             textCapitalization: TextCapitalization.none,
             controller: _controller.emailTextController,
@@ -42,8 +37,8 @@ class LoginScreen extends BaseScreenStandard {
           ),
           Gap(20.dp()),
           TextFieldWidget.withPassword(
-            labelText: 'Password',
-            hintText: 'Enter password',
+            labelText: passwordLabel,
+            hintText: passwordHint,
             controller: _controller.passwordTextController,
             labelStyle: textTheme.bodyMedium,
             unFocusColor: colorScheme.secondary,
@@ -57,10 +52,8 @@ class LoginScreen extends BaseScreenStandard {
             alignment: Alignment.center,
             child: TextButtonWidget(
               onTap: _controller.onForgotPasswordOnClick,
-              text: 'Forgot Password?',
-              style: textTheme.bodyMedium?.copyWith(
-                color: colorScheme.primary,
-              ),
+              text: forgotPassword,
+              style: textTheme.bodyMedium?.copyWith(color: colorScheme.primary),
             ),
           ),
           Gap(50.dp()),
@@ -71,15 +64,15 @@ class LoginScreen extends BaseScreenStandard {
 
   @override
   Widget bottomNavigationBar(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.dp(), vertical: 16.dp()),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Obx(
-                () => ButtonWidget(
+            () => ButtonWidget(
               onTap: _controller.onSignInOnClick,
-              text: 'Sign In',
+              text: signInButtonTitle,
               enabled: _controller.isLoginEntriesValid.value,
               isLoading: _controller.isProcessingRequest.value,
             ),
@@ -92,13 +85,13 @@ class LoginScreen extends BaseScreenStandard {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "Don't have an account?  ",
+                      text: dontHaveAccount,
                       style: textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     TextSpan(
-                      text: "Sign Up",
+                      text: signUpButtonTitle,
                       style: textTheme.bodyMedium?.copyWith(
                         color: colorScheme.primary,
                         fontWeight: FontWeight.w600,

@@ -21,23 +21,17 @@ class SignUpScreen extends BaseScreenStandard {
   @override
   Widget body(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(
-        horizontal: 24.dp(),
-        vertical: 16.dp(),
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 24.dp(), vertical: 16.dp()),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Create your profile", style: textTheme.titleLarge),
+          Text(signUpTitle, style: textTheme.titleLarge),
           Gap(20.dp()),
-          Text(
-            "Create your profile and start planning your next trip.",
-            style: textTheme.labelMedium,
-          ),
+          Text(signUpSubTitle, style: textTheme.labelSmall),
           Gap(100.dp()),
           TextFieldWidget(
-            labelText: 'Email',
-            hintText: 'example@company.com',
+            labelText: emailLabel,
+            hintText: emailHintExample,
             keyboardType: TextInputType.emailAddress,
             textCapitalization: TextCapitalization.none,
             controller: _controller.emailTextController,
@@ -48,14 +42,14 @@ class SignUpScreen extends BaseScreenStandard {
           ),
           Gap(5.dp()),
           Text(
-            "We will send you a code to confirm your email.",
-            style: textTheme.labelMedium?.copyWith(fontSize: 12.dp()),
+            signUpWithEmailDesc,
+            style: textTheme.labelSmall?.copyWith(fontSize: 12.dp()),
           ),
           Gap(140.dp()),
           Obx(
             () => ButtonWidget(
               onTap: _controller.onSignUpOnClick,
-              text: 'Continue',
+              text: continueButtonTitle,
               enabled: _controller.isLoginEntriesValid.value,
               isLoading: _controller.isProcessingRequest.value,
             ),
@@ -69,13 +63,13 @@ class SignUpScreen extends BaseScreenStandard {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "Already have an account?  ",
+                      text: alreadyHaveAccount,
                       style: textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     TextSpan(
-                      text: "Sign In",
+                      text: signInButtonTitle,
                       style: textTheme.bodyMedium?.copyWith(
                         color: colorScheme.primary,
                         fontWeight: FontWeight.w600,
@@ -94,7 +88,7 @@ class SignUpScreen extends BaseScreenStandard {
 
   @override
   Widget bottomNavigationBar(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.dp(), vertical: 16.dp()),
       child: Column(
         mainAxisSize: MainAxisSize.min,
